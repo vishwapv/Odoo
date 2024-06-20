@@ -30,9 +30,38 @@ import messages from './messages';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
+
 import reducer from './reducer';
 import saga from './saga';
+import './HomePage.css';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    width: 500,
+    height:500,
+    position:'relative'
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 25,
+    display: 'flex',
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
 const key = 'home';
 
 export function HomePage({
@@ -56,48 +85,26 @@ export function HomePage({
     error,
     repos,
   };
+  const classes = useStyles();
 
   return (
-    <article>
-      <Helmet>
-        <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React.js Boilerplate application homepage"
-        />
-      </Helmet>
-      <div>
-        <CenteredSection>
-          <H2>
-            <FormattedMessage {...messages.startProjectHeader} />
-          </H2>
-          <p>
-            <FormattedMessage {...messages.startProjectMessage} />
-          </p>
-        </CenteredSection>
-        <Section>
-          <H2>
-            <FormattedMessage {...messages.trymeHeader} />
-          </H2>
-          <Form onSubmit={onSubmitForm}>
-            <label htmlFor="username">
-              <FormattedMessage {...messages.trymeMessage} />
-              <AtPrefix>
-                <FormattedMessage {...messages.trymeAtPrefix} />
-              </AtPrefix>
-              <Input
-                id="username"
-                type="text"
-                placeholder="mxstbr"
-                value={username}
-                onChange={onChangeUsername}
-              />
-            </label>
-          </Form>
-          <ReposList {...reposListProps} />
-        </Section>
-      </div>
-    </article>
+  <div className='container'>
+    <Card className={classes.root}>
+      <CardContent className='card-container'>
+        
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          Welcome to 
+        </Typography>
+        <Typography>
+         <h2>Odoo</h2>
+        </Typography>
+        
+      </CardContent>
+      <CardActions className='card-button'>
+        <Button size="large">Identify Manually</Button>
+      </CardActions>
+    </Card>
+  </div>
   );
 }
 

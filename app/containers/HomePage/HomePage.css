@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #dbeff0;
+    position: relative;
+}
+.card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    
+}
+.card-button{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    position: absolute;
+    bottom: 1px;
+    right: 0px;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+}
